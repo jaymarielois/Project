@@ -1,0 +1,193 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier-Bold;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Oblique;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue109;\red15\green112\blue3;\red30\green128\blue240;
+\red109\green111\blue5;\red82\green0\blue103;\red0\green0\blue254;\red109\green109\blue109;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c42745;\csgenericrgb\c5882\c43922\c1176;\csgenericrgb\c11765\c50196\c94118;
+\csgenericrgb\c42745\c43529\c1961;\csgenericrgb\c32157\c0\c40392;\csgenericrgb\c0\c0\c99608;\csgenericrgb\c42745\c42745\c42745;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 import \cf3 'package:flutter/material.dart'
+\f1\b0 \cf0 ;\
+
+\f0\b \cf2 import \cf3 'package:welcome/login.dart'
+\f1\b0 \cf0 ;\
+
+\f0\b \cf2 import \cf3 'package:welcome/signup.dart'
+\f1\b0 \cf0 ;\
+\
+
+\f0\b \cf2 void 
+\f1\b0 \cf0 main() \{\
+  runApp(
+\f0\b \cf2 const 
+\f1\b0 \cf4 MaterialApp\cf0 (\
+    debugShowCheckedModeBanner: 
+\f0\b \cf2 false
+\f1\b0 \cf0 ,\
+    home: \cf4 HomePage\cf0 ()\
+  )\
+  );\
+\}\
+\
+
+\f0\b \cf2 class 
+\f1\b0 \cf0 HomePage 
+\f0\b \cf2 extends 
+\f1\b0 \cf0 StatelessWidget \{\
+  
+\f0\b \cf2 const 
+\f1\b0 \cf0 HomePage(\{Key? key\}) : 
+\f0\b \cf2 super
+\f1\b0 \cf0 (key: key);\
+\
+  \cf5 @override\
+  \cf0 Widget build(BuildContext context) \{\
+    
+\f0\b \cf2 return 
+\f1\b0 \cf4 Scaffold\cf0 (\
+      body: \cf4 SafeArea\cf0 (\
+        child: \cf4 Container\cf0 (\
+          width: double.
+\f2\i \cf6 infinity
+\f1\i0 \cf0 ,\
+          height: MediaQuery.
+\f2\i of
+\f1\i0 (context).
+\f0\b \cf6 size
+\f1\b0 \cf0 .
+\f0\b \cf6 height
+\f1\b0 \cf0 ,\
+          padding: \cf4 EdgeInsets\cf0 .\cf4 symmetric\cf0 (horizontal: \cf7 30\cf0 , vertical: \cf7 50\cf0 ),\
+          child: \cf4 Column\cf0 (\
+            mainAxisAlignment: MainAxisAlignment.
+\f0\b \cf6 spaceBetween
+\f1\b0 \cf0 ,\
+            crossAxisAlignment: CrossAxisAlignment.
+\f0\b \cf6 center
+\f1\b0 \cf0 ,\
+            children:<Widget>[\
+              \cf4 Column\cf0 (\
+                children: <Widget>[\
+                  \cf4 Text\cf0 (\
+                    
+\f0\b \cf3 "WELCOME"
+\f1\b0 \cf0 ,\
+                    style: \cf4 TextStyle\cf0 (\
+                      fontWeight: FontWeight.
+\f2\i \cf6 bold
+\f1\i0 \cf0 ,\
+                      fontSize: \cf7 50\cf0 ,\
+                    ),\
+                  ),\
+                  \cf4 SizedBox\cf0 (\
+                    height: \cf7 .000001\cf0 ,\
+                  ),\
+                  \cf4 Text\cf0 (
+\f0\b \cf3 "Happiness blooms from within"
+\f1\b0 \cf0 ,\
+                  textAlign: TextAlign.
+\f0\b \cf6 center
+\f1\b0 \cf0 ,\
+                  style: \cf4 TextStyle\cf0 (\
+                    color: Colors.
+\f2\i \cf6 black38
+\f1\i0 \cf0 ,\
+                    fontSize: \cf7 15\
+                  \cf0 ),)\
+                ],\
+              ),\
+              \cf4 Container\cf0 (\
+                height: MediaQuery.
+\f2\i of
+\f1\i0 (context).
+\f0\b \cf6 size
+\f1\b0 \cf0 .
+\f0\b \cf6 height 
+\f1\b0 \cf0 / \cf7 3\cf0 ,\
+                decoration: \cf4 BoxDecoration\cf0 (\
+                  image: \cf4 DecorationImage\cf0 (\
+                    image: \cf4 AssetImage\cf0 (
+\f0\b \cf3 "assets/image/myproject.png"
+\f1\b0 \cf0 )\
+                  )\
+                ),\
+              ),\
+              \cf4 Column\cf0 (\
+                children:<Widget>[\
+                  
+\f2\i \cf8 //log in button\
+                  
+\f1\i0 \cf4 MaterialButton\cf0 (minWidth: double.
+\f2\i \cf6 infinity
+\f1\i0 \cf0 ,\
+                      height: \cf7 60\cf0 ,\
+                      onPressed: () \{\
+                    Navigator.
+\f2\i push
+\f1\i0 (context, \cf4 MaterialPageRoute\cf0 (builder: (context) => \cf4 LoginPage\cf0 ()));\
+                      \},\
+                  shape: \cf4 RoundedRectangleBorder\cf0 (\
+                    side: \cf4 BorderSide\cf0 (\
+                      color: Colors.
+\f2\i \cf6 black\
+                    
+\f1\i0 \cf0 ),\
+                    borderRadius: \cf4 BorderRadius\cf0 .\cf4 circular\cf0 (\cf7 50\cf0 )\
+                  ),\
+                    child: \cf4 Text\cf0 (
+\f0\b \cf3 "Log in"
+\f1\b0 \cf0 ,\
+                    style: \cf4 TextStyle\cf0 (\
+                      fontWeight: FontWeight.
+\f2\i \cf6 w600
+\f1\i0 \cf0 ,\
+                      fontSize: \cf7 20\
+                    \cf0 ))\
+                  ),\
+                  
+\f2\i \cf8 //sign up button\
+                  
+\f1\i0 \cf4 SizedBox\cf0 (height: \cf7 20\cf0 ),\
+                  \cf4 MaterialButton\cf0 (\
+                      minWidth: double.
+\f2\i \cf6 infinity
+\f1\i0 \cf0 ,\
+                      height: \cf7 60\cf0 ,\
+                      onPressed: () \{\
+                        Navigator.
+\f2\i push
+\f1\i0 (context, \cf4 MaterialPageRoute\cf0 (builder: (context)=> \cf4 SignupPage\cf0 ()));\
+                      \},\
+                    color: Colors.
+\f2\i \cf6 amberAccent
+\f1\i0 \cf0 ,\
+                    shape: \cf4 RoundedRectangleBorder\cf0 (\
+                      borderRadius: \cf4 BorderRadius\cf0 .\cf4 circular\cf0 (\cf7 50\cf0 )\
+                    ),\
+                    child: \cf4 Text\cf0 (
+\f0\b \cf3 "Sign up"
+\f1\b0 \cf0 ,\
+                      style: \cf4 TextStyle\cf0 (\
+                        color: Colors.
+\f2\i \cf6 black
+\f1\i0 \cf0 ,\
+                        fontWeight: FontWeight.
+\f2\i \cf6 w600
+\f1\i0 \cf0 ,\
+                        fontSize: \cf7 20\cf0 ,\
+                      ),\
+                    ),\
+                  )\
+                ],\
+              )\
+            ],\
+          ),\
+        ),\
+      ),\
+    );\
+  \}\
+\}\
+\
+}

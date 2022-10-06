@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flowercart/model/models.dart';
 import 'package:flowercart/screens/cart/cart_screen.dart';
 import 'package:flowercart/screens/catalog/catalog_screen.dart';
 import 'package:flowercart/screens/home/home_screen.dart';
@@ -20,11 +21,11 @@ class AppRouter {
       case CartScreen.routeName:
         return CartScreen.route();
       case ProductScreen.routeName:
-        return ProductScreen.route();
+        return ProductScreen.route(product: settings.arguments as Product);
       case WishlistScreen.routeName:
         return WishlistScreen.route();
       case CatalogScreen.routeName:
-        return CatalogScreen.route();
+        return CatalogScreen.route(category: settings.arguments as Category);
 
 
       default:

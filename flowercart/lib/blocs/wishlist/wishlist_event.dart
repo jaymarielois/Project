@@ -1,47 +1,28 @@
 part of 'wishlist_bloc.dart';
 
 abstract class WishlistEvent extends Equatable {
-   WishlistState();
+  const WishlistEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class StartWishlist extends WishlistEvent {
-  @override
-  WishlistState() {
-    // TODO: implement WishlistState
-    throw UnimplementedError();
-  }
-}
-
+class StartWishlist extends WishlistEvent {}
 
 class AddWishlistProduct extends WishlistEvent {
   final Product product;
 
-  AddWishlistProduct(this.product);
+  const AddWishlistProduct(this.product);
 
   @override
   List<Object> get props => [product];
-
-  @override
-  WishlistState() {
-    // TODO: implement WishlistState
-    throw UnimplementedError();
-  }
 }
 
 class RemoveWishlistProduct extends WishlistEvent {
   final Product product;
 
-  RemoveWishlistProduct(this.product);
+  const RemoveWishlistProduct(this.product);
 
   @override
   List<Object> get props => [product];
-
-  @override
-  WishlistState() {
-    // TODO: implement WishlistState
-    throw UnimplementedError();
-  }
 }

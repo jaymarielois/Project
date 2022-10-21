@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Color(0xffEDDBC0),
-        title: Text("Create Your Accunt", style: TextStyle(color: Colors.black),),
+        title: Text("Create Your Account", style: TextStyle(color: Colors.black),),
       ),
       body: Container(
         color: Colors.white,

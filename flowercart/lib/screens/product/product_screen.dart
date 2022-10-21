@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flowercart/blocs/cart/cart_bloc.dart';
 import 'package:flowercart/blocs/wishlist/wishlist_bloc.dart';
 import 'package:flowercart/model/models.dart';
 import 'package:flutter/material.dart';
@@ -46,13 +47,23 @@ class ProductScreen extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         });
                   },
-                ),
-                ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: Colors.white),
-                  onPressed: () {},
-                  child: Text('ADD TO CART',
-                      style: Theme.of(context).textTheme.headline3!),
+                ), 
+                
+                BlocBuilder<CartBloc, CartState>(
+                  builder: (context, state) {
+                    return ElevatedButton(
+                                  style:
+                                      ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                                  onPressed: () {
+                                    context
+                                         .read<CartBloc>()
+                                         .add(CartProductAdded(product));
+                                         Navigator.pushNamed(context, '/cart');
+                                         },
+                                  child: Text('ADD TO CART',
+                                      style: Theme.of(context).textTheme.headline3!),
+                                );
+                  },
                 )
               ],
             ),

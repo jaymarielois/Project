@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Reines Fleuries'),
-      bottomNavigationBar: CustomNavBar(),
+      bottomNavigationBar: CustomNavBar(screen: routeName),
       body: Column(
         children: [
           CarouselSlider(

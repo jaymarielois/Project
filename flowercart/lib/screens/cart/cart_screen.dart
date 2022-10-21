@@ -1,7 +1,9 @@
+import 'package:flowercart/blocs/cart/cart_bloc.dart';
 import 'package:flowercart/model/cart_model.dart';
 import 'package:flowercart/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flowercart/widgets/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartScreen extends StatelessWidget {
   static const String routeName = '/cart';
@@ -28,7 +30,9 @@ class CartScreen extends StatelessWidget {
                 ElevatedButton(
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/checkout');
+                  },
                   child: Text('GO TO CHECKOUT',
                       style: Theme.of(context).textTheme.headline3!.copyWith(color: Colors.white)),
                 )
@@ -36,7 +40,16 @@ class CartScreen extends StatelessWidget {
             ),
           ),
           ),
-      body: Padding(
+      body: 
+      BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) {
+          if (state is CartLoading) {
+          return Center(
+            child: CircularProgressIndicator(),
+            );
+          }
+          if (state is CartLoaded) {
+           return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,7 +59,7 @@ class CartScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [Text(
-                    Cart().freeDeliveryString,
+                    state.cart.freeDeliveryString,
                   style: Theme.of(context).textTheme.headline5,
                   ),
                   ElevatedButton(onPressed: () {
@@ -68,94 +81,37 @@ class CartScreen extends StatelessWidget {
 
             SizedBox(height: 400,
             child: ListView.builder(
-              itemCount: Cart().products.length,
+              itemCount: state.cart
+              .productQuantity(state.cart.products)
+              .keys
+              .length,
               itemBuilder: (context, index) {
-                return CartProductCard(product: Cart().products[index]);
+                return CartProductCard(
+                  product: state.cart
+                  .productQuantity(state.cart.products)
+                  .keys
+                  .elementAt(index),
+                  quantity: state.cart
+                  .productQuantity(state.cart.products)
+                  .values
+                  .elementAt(index),
+                  
+                  );
               },
               ),
             ),
+            OrderSummary(),
               ],
             ),
-            
-
-             
-            Column(children: [
-              Divider(thickness: 2),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('SUBTOTAL', 
-                      style: Theme.of(context).textTheme.headline5,
-                      ),
-                      Text('\$${Cart().subtotalString}',
-                      style: Theme.of(context).textTheme.headline5,
-                      ),
-                    ],
-                    ),
-                    SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                     Text('DELIVERY FEE', 
-                     style: Theme.of(context).textTheme.headline5,
-                     ),
-                      Text('\$${Cart().deliveryFeeString}',
-                     style: Theme.of(context).textTheme.headline5,
-                  ),
-                ],
-                ),
-                
-                ],
-              ),
-            ),
-            Stack(
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.black.withAlpha(50),
-                      ),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: const EdgeInsets.all(5),
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
-                        child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                     Text('TOTAL', 
-                     style: Theme.of(context)
-                     .textTheme
-                     .headline5!
-                     .copyWith(color: Colors.black),
-                     ),
-                        Text('\$${Cart().totalString}',
-                     style: Theme.of(context)
-                     .textTheme
-                     .headline5!
-                     .copyWith(color: Colors.black),
-                  ),
-                ],
-                ),
-                      ),
-                    ),
-                  ],
-                  ),
-            ],)
-            
           ],
           ),
-      ),
+      );
+          } else{
+            return Text('Something went wrong');
+          }
+        },
+
+      )
     );
   }
 }

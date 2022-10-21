@@ -1,5 +1,7 @@
+import 'package:flowercart/blocs/cart/cart_bloc.dart';
 import 'package:flowercart/model/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -11,7 +13,7 @@ class ProductCard extends StatelessWidget {
     Key? key,
     required this.product,
     this.withFactor = 2.5,
-    this.leftPosition = 5,
+    this.leftPosition = 0,
     this.isWishlist = false,
   }) : super(key: key);
 
@@ -19,8 +21,11 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/product', arguments: product,
-         );
+        Navigator.pushNamed(
+          context,
+          '/product',
+          arguments: product,
+        );
       },
       child: Stack(
         children: [
@@ -65,41 +70,68 @@ class ProductCard extends StatelessWidget {
                           Text(
                             product.name,
                             style:
-                            Theme.of(context).textTheme.headline5!.copyWith(
-                              color: Colors.white,
-                            ),
+                                Theme.of(context).textTheme.headline5!.copyWith(
+                                      color: Colors.white,
+                                    ),
                           ),
                           Text(
                             '\$${product.price}',
                             style:
-                            Theme.of(context).textTheme.headline6!.copyWith(
-                              color: Colors.white,
-                            ),
+                                Theme.of(context).textTheme.headline6!.copyWith(
+                                      color: Colors.white,
+                                    ),
                           ),
                         ],
                       ),
                     ),
-                    Expanded(
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.add_circle, color: Colors.white,),
-                      ),
+                    BlocBuilder<CartBloc, CartState>(
+                      builder: (context, state) {
+                        if (state is CartLoading) {
+                          return Center(
+                            child: CircularProgressIndicator(),
+                            );
+                        }
+                        if (state is CartLoaded) {
+                          return Expanded(
+                          child: IconButton(
+                            onPressed: () {
+                              context
+                              .read<CartBloc>()
+                              .add(CartProductAdded(product));
+
+                          final snackBar = SnackBar(content: Text('Added to your Cart!'));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            },
+                            icon: Icon(
+                              Icons.add_circle,
+                              color: Colors.white,
+                            ),
+                          ),
+                        );
+                        } else{
+                          return Text('Something went wrong.');
+                        }
+                        
+                      },
                     ),
-                    isWishlist ?
-                    Expanded(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.delete, color: Colors.white,),
-                      ),
-                    )
+                    isWishlist
+                        ? Expanded(
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
                         : SizedBox()
                   ],
                 ),
-              ) ,
+              ),
             ),
-          )],
+          )
+        ],
       ),
     );
   }
 }
-

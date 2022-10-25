@@ -5,3 +5,5 @@ export 'home/wishlist_screen.dart';
 export 'home/product_screen.dart';
 export 'splash/splash_screen.dart';
 export 'checkout/checkout_screen.dart';
+export 'package:flowercart/login.dart';
+export 'package:flowercart/signup.dart';

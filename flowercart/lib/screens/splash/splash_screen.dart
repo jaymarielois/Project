@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flowercart/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -13,7 +14,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 3), () => Navigator.pushNamed(context, '/'));
+    Timer(Duration(seconds: 3), () => Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage())));
     
     return Scaffold(
       body: Column(

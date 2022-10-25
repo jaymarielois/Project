@@ -45,6 +45,8 @@ List<Widget>? _selectNavBar(context,  screen) {
       return _buildGoToCheckoutNavBar(context);
     case '/checkout':
       return _buildOrderNowNavBar(context);
+    case '/user':
+      return _buildNavBar(context);
     default: 
       _buildNavBar(context);
   }

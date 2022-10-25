@@ -19,7 +19,8 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Cart'),
+      appBar: CustomAppBar(
+        title: 'Cart'),
       bottomNavigationBar: BottomAppBar(
           color: Color(0xffEDDBC0),
           child: Container(

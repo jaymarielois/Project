@@ -7,6 +7,7 @@ import 'package:flowercart/screens/checkout/checkout_screen.dart';
 import 'package:flowercart/screens/home/home_screen.dart';
 import 'package:flowercart/screens/order_confirmation/order_confirmation.dart';
 import 'package:flowercart/screens/product/product_screen.dart';
+import 'package:flowercart/screens/profile.dart';
 import 'package:flowercart/screens/splash/splash_screen.dart';
 import 'package:flowercart/screens/wishlist/wishlist_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,6 +26,8 @@ class AppRouter {
         return SplashScreen.route();
       case CartScreen.routeName:
         return CartScreen.route();
+      case ProfileScreen.routeName:
+        return ProfileScreen.route();
       case ProductScreen.routeName:
         return ProductScreen.route(product: settings.arguments as Product);
       case WishlistScreen.routeName:
@@ -35,6 +38,7 @@ class AppRouter {
         return CheckoutScreen.route();
       case OrderConfirmation.routeName:
         return OrderConfirmation.route();
+      
       
       
 

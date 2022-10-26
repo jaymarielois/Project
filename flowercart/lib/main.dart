@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           title: 'Reines Fleuries',
           theme: theme(),
           onGenerateRoute: AppRouter.onGenerateRoute,
-          initialRoute: ProfileScreen.routeName,
+          initialRoute: SplashScreen.routeName,
         ),
       );
     });
@@ -49,34 +49,34 @@ class MyApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children:<Widget>[
-              Column(
-                children: <Widget>[
-                  Text(
-                    "WELCOME",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 50,
-                    ),
-                  ),
-                  SizedBox(
-                    height: .000001,
-                  ),
-                  Text("Happiness blooms from within",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black38,
-                    fontSize: 15
-                  ),)
-                ],
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/image/myproject.png")
-                  )
-                ),
-              ),
+              // Column(
+              //   children: <Widget>[
+              //     Text(
+              //       "WELCOME",
+              //       style: TextStyle(
+              //         fontWeight: FontWeight.bold,
+              //         fontSize: 50,
+              //       ),
+              //     ),
+              //     SizedBox(
+              //       height: .000001,
+              //     ),
+              //     Text("Happiness blooms from within",
+              //     textAlign: TextAlign.center,
+              //     style: TextStyle(
+              //       color: Colors.black38,
+              //       fontSize: 15
+              //     ),)
+              //   ],
+              // ),
+              // Container(
+              //   height: MediaQuery.of(context).size.height / 3,
+              //   decoration: BoxDecoration(
+              //     image: DecorationImage(
+              //       image: AssetImage("assets/image/myproject.png")
+              //     )
+              //   ),
+              // ),
               Column(
                 children:<Widget>[
                   //log in button

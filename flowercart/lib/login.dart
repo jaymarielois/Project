@@ -72,10 +72,16 @@ class _LoginPageState extends State<LoginPage>{
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.black54,
-                    ),)
+                    ),
+                    ),
+                    SizedBox(height: 10,),
+                  CircleAvatar(
+              radius: 50,
+              backgroundImage: AssetImage("lib/assets/images/profile.jpg"),
+            ),
                   ],
                 ),
-                Padding(padding: EdgeInsets.symmetric(horizontal: 40),
+                Padding(padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Column( children:<Widget> [
                       TextField(
                         decoration: InputDecoration(

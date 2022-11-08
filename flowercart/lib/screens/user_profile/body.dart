@@ -25,7 +25,6 @@ const Body ({super.key});
             ),
             SizedBox(height: 50,),
              Container(
-              alignment: Alignment.center,
                         child:GestureDetector(
                         onTap:(){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=> MyAccountPage()));

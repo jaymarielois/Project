@@ -41,11 +41,11 @@ double deliveryFee(subtotal) {
 
   String freeDelivery(subtotal) {
     if (subtotal >= 30.0) {
-      return 'You have Free Delivery';
+      return 'You have Free Delivery!';
     } else {
       double missing = 30.0 - subtotal;
 
-      return 'Add\$${missing.toStringAsFixed(2)} for FREE DELVERY';
+      return 'Add\$${missing.toStringAsFixed(2)} for FREE DELIVERY!';
     }
   }
 

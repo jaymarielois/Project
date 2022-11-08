@@ -74,7 +74,8 @@ class SignupPage extends StatefulWidget {
                 ],
               ),
                Padding(padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: Column( children:<Widget> [
+                  child: Column( 
+                    children:<Widget> [
                    TextField(
               decoration: InputDecoration(
                   border: OutlineInputBorder(

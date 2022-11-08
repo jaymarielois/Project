@@ -17,6 +17,7 @@ class CheckoutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController nameController = TextEditingController();
+    final TextEditingController numberController = TextEditingController();
     final TextEditingController addressController = TextEditingController();
     final TextEditingController cityController = TextEditingController();
     final TextEditingController countryController = TextEditingController();
@@ -36,6 +37,7 @@ class CheckoutScreen extends StatelessWidget {
             ),
             _buildTextFormField(emailController, context, 'Email'),
             _buildTextFormField(nameController, context, 'Full Name'),
+            _buildTextFormField(nameController, context, 'Number'),
             Text(
               'DELIVERY INFORMATION',
               style: Theme.of(context).textTheme.headline3,

@@ -13,6 +13,7 @@ class MyAccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController nameController = TextEditingController();
+    final TextEditingController numberController = TextEditingController();
     final TextEditingController addressController = TextEditingController();
     
     return Scaffold(
@@ -24,13 +25,11 @@ class MyAccountPage extends StatelessWidget {
           onTap: () {
             FocusScope.of(context).unfocus();
           },
-          child: ListView(
+          child: Column(
+         crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text('Profile',
               style: Theme.of(context).textTheme.headline3,
-              ),
-              SizedBox(
-                height: 15,
               ),
               Center(
                 child: Stack(
@@ -40,7 +39,7 @@ class MyAccountPage extends StatelessWidget {
                       height: 110,
                       decoration: BoxDecoration(
                           border: Border.all(
-                              width: 4,
+                              width: 1,
                               color: Theme.of(context).scaffoldBackgroundColor),
                           boxShadow: [
                             BoxShadow(
@@ -65,7 +64,7 @@ class MyAccountPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
-                              width: 4,
+                              width: 1,
                               color: Theme.of(context).scaffoldBackgroundColor,
                             ),
                             color: Colors.black,
@@ -88,6 +87,7 @@ class MyAccountPage extends StatelessWidget {
               ),
               _buildTextFormField(emailController, context, 'Email'),
               _buildTextFormField(nameController, context, 'Full Name'),
+              _buildTextFormField(nameController, context, 'Number'),
               _buildTextFormField(addressController, context, 'Address'),
               SizedBox(
                 height: 35,
@@ -110,23 +110,24 @@ class MyAccountPage extends StatelessWidget {
     child: Row(children: [
       SizedBox(
         width: 75,
-        child: Text(labelText, style: Theme.of(context).textTheme.bodyText1,),
+        child: Text(labelText, style: Theme.of(context).textTheme.headline5,),
         ),
         Expanded(
           child: TextFormField(
             controller: controller,
             decoration: InputDecoration(
-              isDense:  true,
+              isDense:  false,
               contentPadding: const EdgeInsets.only(left: 10),
-              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black,
+              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.black),
+                            ),
               ),
               ),
             ),
+    ]
         ),
-        )
-    ],
-    ),
-    );
+        );
   }
 
   void setState(Null Function() param0) {}

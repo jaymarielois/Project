@@ -1,16 +1,9 @@
 import 'package:flowercart/login.dart';
-import 'package:flowercart/screens/home/home_screen.dart';
+import 'package:flowercart/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 class SignupPage extends StatefulWidget {
-  static const String routeName = '/signup';
-
-   static Route route() {
-    return MaterialPageRoute(
-        settings: RouteSettings(name: routeName),
-        builder: (context) => SignupPage(),
-    );
-  }
-
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
   State<SignupPage> createState() => _SignupPageState();
@@ -19,6 +12,9 @@ class SignupPage extends StatefulWidget {
   bool _isVisible = false;
   bool _isPasswordEightCharacters = false;
   bool _hasPasswordNumber = false;
+  DateTime selectedDate = DateTime.now();
+
+  TextEditingController _dateController = TextEditingController();
 
   onPasswordChanged(String password) {
   final numericRegex = RegExp(r'[0-9]');
@@ -74,8 +70,7 @@ class SignupPage extends StatefulWidget {
                 ],
               ),
                Padding(padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: Column( 
-                    children:<Widget> [
+                  child: Column( children:<Widget> [
                    TextField(
               decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -106,6 +101,49 @@ class SignupPage extends StatefulWidget {
                       ),
                     ),
                       SizedBox( height: 10,),
+
+        TextFormField(
+  readOnly: true,
+  controller: _dateController,
+  decoration: InputDecoration(
+    border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.black)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+    hintText: 'Birthday',
+  ),
+  onTap: () async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2025),
+    // ).then((selectedDate) {
+    //   if (selectedDate != null) {
+    //     _dateController.text = DateFormat('yyyy-MM-dd').format(selectedDate).toString();
+    //     print(selectedDate);
+    //   }
+    // }
+    );
+    if (picked != null && picked != DateTime.now()){
+        setState(() {
+          selectedDate = picked;
+          _dateController.text = selectedDate.toString().substring(0,10);
+        });
+    }
+  },
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter date.';
+    }
+    return null;
+  },
+),
+SizedBox( height: 10,),
 
   TextField(
   onChanged: (password) => onPasswordChanged(password),
@@ -187,7 +225,7 @@ class SignupPage extends StatefulWidget {
                   minWidth: double.infinity,
                   height: 60,
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
                   },
                   color: Colors.white,
                   elevation: 0,
@@ -228,4 +266,13 @@ class SignupPage extends StatefulWidget {
     ),
     );
   }
+}
+
+useTextEditingController() {
+}
+
+class DateFormat {
+  DateFormat();
+  
+  format(DateTime selectedDate) {}
 }

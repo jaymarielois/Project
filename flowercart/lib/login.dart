@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage>{
                               borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(color: Colors.black),
                             ),
-                            hintText: "Email",
+                            hintText: "Username",
                             contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20)
                         ),
                       ),

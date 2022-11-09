@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:welcome/login.dart';
-
+import 'package:intl/intl.dart';
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
 
@@ -11,6 +11,9 @@ class SignupPage extends StatefulWidget {
   bool _isVisible = false;
   bool _isPasswordEightCharacters = false;
   bool _hasPasswordNumber = false;
+  DateTime selectedDate = DateTime.now();
+
+  TextEditingController _dateController = TextEditingController();
 
   onPasswordChanged(String password) {
   final numericRegex = RegExp(r'[0-9]');
@@ -97,6 +100,49 @@ class SignupPage extends StatefulWidget {
                       ),
                     ),
                       SizedBox( height: 10,),
+
+        TextFormField(
+  readOnly: true,
+  controller: _dateController,
+  decoration: InputDecoration(
+    border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.black)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+    hintText: 'Birthday',
+  ),
+  onTap: () async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2025),
+    // ).then((selectedDate) {
+    //   if (selectedDate != null) {
+    //     _dateController.text = DateFormat('yyyy-MM-dd').format(selectedDate).toString();
+    //     print(selectedDate);
+    //   }
+    // }
+    );
+    if (picked != null && picked != DateTime.now()){
+        setState(() {
+          selectedDate = picked;
+          _dateController.text = selectedDate.toString().substring(0,10);
+        });
+    }
+  },
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter date.';
+    }
+    return null;
+  },
+),
+SizedBox( height: 10,),
 
   TextField(
   onChanged: (password) => onPasswordChanged(password),
@@ -217,4 +263,13 @@ class SignupPage extends StatefulWidget {
     ),
     );
   }
+}
+
+useTextEditingController() {
+}
+
+class DateFormat {
+  DateFormat();
+  
+  format(DateTime selectedDate) {}
 }

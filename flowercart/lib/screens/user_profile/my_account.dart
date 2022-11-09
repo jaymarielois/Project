@@ -87,12 +87,12 @@ class MyAccountPage extends StatelessWidget {
               ),
               _buildTextFormField(emailController, context, 'Email'),
               _buildTextFormField(nameController, context, 'Full Name'),
-              _buildTextFormField(nameController, context, 'Number'),
+              _buildTextFormField(numberController, context, 'Number'),
               _buildTextFormField(addressController, context, 'Address'),
               SizedBox(
                 height: 35,
               ),
-
+              
             ],
           ),
         ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:welcome/homepage.dart';
 import 'package:welcome/login.dart';
 import 'package:intl/intl.dart';
+import 'package:welcome/main.dart';
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
 
@@ -14,6 +16,9 @@ class SignupPage extends StatefulWidget {
   DateTime selectedDate = DateTime.now();
 
   TextEditingController _dateController = TextEditingController();
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   onPasswordChanged(String password) {
   final numericRegex = RegExp(r'[0-9]');
@@ -71,6 +76,7 @@ class SignupPage extends StatefulWidget {
                Padding(padding: EdgeInsets.symmetric(horizontal: 40),
                   child: Column( children:<Widget> [
                    TextField(
+                    controller: _usernameController,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -86,6 +92,7 @@ class SignupPage extends StatefulWidget {
             ),
                     SizedBox( height: 10,),
                     TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -145,6 +152,7 @@ class SignupPage extends StatefulWidget {
 SizedBox( height: 10,),
 
   TextField(
+    controller: _passwordController,
   onChanged: (password) => onPasswordChanged(password),
   obscureText: !_isVisible,
   decoration: InputDecoration(
@@ -223,7 +231,11 @@ SizedBox( height: 10,),
                 child: MaterialButton(
                   minWidth: double.infinity,
                   height: 60,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                  },
                   color: Colors.white,
                   elevation: 0,
                   shape: RoundedRectangleBorder(

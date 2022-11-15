@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:welcome/homepage.dart';
+import 'package:welcome/main.dart';
 import 'package:welcome/signup.dart';
 
 class LoginPage extends StatefulWidget {
@@ -128,7 +130,11 @@ class _LoginPageState extends State<LoginPage>{
                   child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                      },
                     color: Colors.white,
                     elevation: 0,
                     shape: RoundedRectangleBorder(

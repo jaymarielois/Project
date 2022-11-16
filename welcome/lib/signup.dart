@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:welcome/code.dart';
 import 'package:welcome/homepage.dart';
 import 'package:welcome/login.dart';
 import 'package:intl/intl.dart';
@@ -234,7 +235,7 @@ SizedBox( height: 10,),
                   onPressed: () {
                     Navigator.push(context,
                           MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
+                              builder: (context) => SampleDesign()));
                   },
                   color: Colors.white,
                   elevation: 0,

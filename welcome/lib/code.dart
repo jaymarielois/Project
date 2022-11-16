@@ -2,20 +2,20 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
 class SampleDesign extends StatefulWidget {
-  const SampleDesign({super.key});
+  SampleDesign({super.key, this.user, this.pass});
+  String? user;
+  String? pass;
 
   @override
   State<SampleDesign> createState() => _SampleDesignState();
 }
 
 class _SampleDesignState extends State<SampleDesign> {
-  TextEditingController username = TextEditingController();
-  TextEditingController password = TextEditingController();
   
 
   Future<Album> createAlbum(String username, String password) async {
     final response = await http.post(
-      Uri.parse('http://192.168.0.138.8000/docs'), //need api
+      Uri.parse('http://127.0.0.1:8081/api/login'), //need api
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       }, 
@@ -23,10 +23,13 @@ class _SampleDesignState extends State<SampleDesign> {
         <String, String>{'username': username, 'password': password}
       ),
     );
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON
-      return Album.fromJson(jsonDecode(response.body));
+
+     var album = Album.fromJson(jsonDecode(response.body));
+     print(album.title);
+     return album;
     } else {
       //if the server diod not returnn a 20p1 CREATED response,
       //then throw an exception.
@@ -37,6 +40,10 @@ class _SampleDesignState extends State<SampleDesign> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController username = TextEditingController();
+    TextEditingController password = TextEditingController();
+    username.text = widget.user!;
+    password.text = widget.pass!;
     return Scaffold(
       appBar: AppBar(
         title: const Text("SampleDesign"),
@@ -57,21 +64,18 @@ class _SampleDesignState extends State<SampleDesign> {
 }
 
 class Album {
-  final int userId;
   final int id;
   final String title;
 
   const Album({
-    required this.userId,
     required this.id,
     required this.title,
   });
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return Album(
-      userId: json['userId'],
       id: json['id'],
-      title: json['title']
+      title: json['username']
     );
   }
 }

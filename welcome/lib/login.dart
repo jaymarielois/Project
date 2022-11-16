@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:welcome/code.dart';
 import 'package:welcome/homepage.dart';
 import 'package:welcome/main.dart';
 import 'package:welcome/signup.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -29,6 +31,8 @@ class _LoginPageState extends State<LoginPage>{
     });
   }
 
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
 
   @override
@@ -71,6 +75,7 @@ class _LoginPageState extends State<LoginPage>{
                 Padding(padding: EdgeInsets.symmetric(horizontal: 40),
                     child: Column( children:<Widget> [
                       TextField(
+                    controller: _usernameController,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -87,6 +92,7 @@ class _LoginPageState extends State<LoginPage>{
                     SizedBox( height: 10,),
 
                     TextField(
+                      controller: _passwordController,
                     onChanged: (password) => onPasswordChanged(password),
                     obscureText: !_isVisible,
                     decoration: InputDecoration(
@@ -133,7 +139,7 @@ class _LoginPageState extends State<LoginPage>{
                       onPressed: () {
                         Navigator.push(context,
                           MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
+                              builder: (context) => SampleDesign(user: _usernameController.text, pass: _passwordController.text,)));
                       },
                     color: Colors.white,
                     elevation: 0,

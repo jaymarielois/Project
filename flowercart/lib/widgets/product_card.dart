@@ -3,6 +3,8 @@ import 'package:flowercart/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../blocs/wishlist/wishlist_bloc.dart';
+
 class ProductCard extends StatelessWidget {
   final Product product;
   final double withFactor;
@@ -41,7 +43,7 @@ class ProductCard extends StatelessWidget {
             top: 100,
             left: leftPosition,
             child: Container(
-              width: MediaQuery.of(context).size.width / 2.5,
+              width: MediaQuery.of(context).size.width,
               height: 50,
               decoration: BoxDecoration(
                 color: Colors.black.withAlpha(50),
@@ -52,7 +54,7 @@ class ProductCard extends StatelessWidget {
             top: 90,
             left: leftPosition + 5,
             child: Container(
-              width: MediaQuery.of(context).size.width / 2.5 - 10,
+              width: MediaQuery.of(context).size.width / 2.5,
               height: 70,
               decoration: BoxDecoration(
                 color: Colors.transparent,
@@ -75,7 +77,7 @@ class ProductCard extends StatelessWidget {
                                     ),
                           ),
                           Text(
-                            '\$${product.price}',
+                            '\₱${product.price}',
                             style:
                                 Theme.of(context).textTheme.headline6!.copyWith(
                                       color: Colors.white,
@@ -117,7 +119,11 @@ class ProductCard extends StatelessWidget {
                     isWishlist
                         ? Expanded(
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () { 
+                                context 
+                                .read<WishlistBloc>()
+                                .add(RemoveWishlistProduct(product));
+                              },
                               icon: Icon(
                                 Icons.delete,
                                 color: Colors.white,

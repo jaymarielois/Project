@@ -5,6 +5,7 @@ import 'package:flowercart/screens/cart/cart_screen.dart';
 import 'package:flowercart/screens/catalog/catalog_screen.dart';
 import 'package:flowercart/screens/checkout/checkout_screen.dart';
 import 'package:flowercart/screens/home/home_screen.dart';
+import 'package:flowercart/screens/home/inbox.dart';
 import 'package:flowercart/screens/order_confirmation/order_confirmation.dart';
 import 'package:flowercart/screens/product/product_screen.dart';
 import 'package:flowercart/screens/profile.dart';
@@ -38,6 +39,8 @@ class AppRouter {
         return CheckoutScreen.route();
       case OrderConfirmation.routeName:
         return OrderConfirmation.route();
+      case Inbox.routeName:
+        return Inbox.route();
       
       
       

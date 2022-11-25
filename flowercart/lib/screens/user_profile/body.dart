@@ -14,15 +14,24 @@ const Body ({super.key});
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        SizedBox(height: 350, width: 400,
-        child: Column(
          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage("lib/assets/images/profile.jpg"),
+            Container(
+              margin: EdgeInsets.only(bottom: 10),
+              height: 70,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage("lib/assets/images/profile.jpg")
+                ),
+              ),
             ),
+            Text("Jaymarie Recare",
+          style: TextStyle(color: Colors.black, fontSize: 20),
+          ),
+          Text("absidi695@gmail.com",
+          style: TextStyle(color: Colors.black, fontSize: 15),
+          ),
             SizedBox(height: 50,),
              Container(
                         child:GestureDetector(
@@ -55,9 +64,6 @@ const Body ({super.key});
             )
             ),
       ],
-      ),
-        ),
-        ],
-        );
+      );
   }
 }

@@ -18,8 +18,8 @@ import 'package:flutter/src/widgets/navigator.dart';
 
   static Route route() {
     return MaterialPageRoute(
-        settings: RouteSettings(name: routeName),
-        builder: (_) => ProfileScreen()
+        settings: const RouteSettings(name: routeName),
+        builder: (_) => const ProfileScreen()
     );
   }
 
@@ -27,24 +27,24 @@ import 'package:flutter/src/widgets/navigator.dart';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Profile'),
-      bottomNavigationBar: CustomNavBar(screen: routeName),
+      appBar: const CustomAppBar(title: 'Profile'),
+      bottomNavigationBar: const CustomNavBar(screen: routeName),
       body: Container(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage("lib/assets/images/profile.jpg"),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
              Container(
                         child:GestureDetector(
                         onTap:(){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=> MyAccountPage()));
                         },
-                        child: ProfileWidget(
+                        child: const ProfileWidget(
                           icon: Icons.person,
                           title: 'Account',
                         ),
@@ -54,7 +54,7 @@ import 'package:flutter/src/widgets/navigator.dart';
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=> SettingPage()));
                         },
-                        child: ProfileWidget(
+                        child: const ProfileWidget(
                           icon: Icons.settings,
                           title: 'Settings',
                         ),
@@ -64,7 +64,7 @@ import 'package:flutter/src/widgets/navigator.dart';
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
                         },
-                        child: ProfileWidget(
+                        child: const ProfileWidget(
                           icon: Icons.logout,
                           title: 'Log Out',
                         ),

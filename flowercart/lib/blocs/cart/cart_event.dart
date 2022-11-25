@@ -16,6 +16,7 @@ class CartProductAdded extends CartEvent {
   final Product product;
 
   const CartProductAdded(this.product);
+
   @override
   List<Object> get props => [product];
 }
@@ -24,6 +25,7 @@ class CartProductRemoved extends CartEvent {
   final Product product;
 
   const CartProductRemoved(this.product);
+  
   @override
   List<Object> get props => [product];
 }

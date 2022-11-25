@@ -39,6 +39,8 @@ List<Widget>? _selectNavBar(context,  screen) {
       return _buildNavBar(context);
     case '/order-confirmation':
       return _buildNavBar(context);
+    case '/inbox':
+      return _buildNavBar(context);
     case '/product':
       return _buildAddToCartNavBar(context, product);
     case '/cart':
@@ -72,6 +74,10 @@ List<Widget> _buildNavBar(context) {
       Navigator.pushNamed(context, '/user');
     }, 
     ),
+    IconButton(icon: Icon(Icons.messenger_rounded),
+    onPressed: () {
+      Navigator.pushNamed(context, '/inbox');
+    }),
   ];
 }
 
@@ -143,7 +149,7 @@ List<Widget> _buildGoToCheckoutNavBar(context) {
 List<Widget> _buildOrderNowNavBar(context) {
   return [
     ElevatedButton(onPressed: () {
-      Navigator.pushNamed(context, '/');
+      Navigator.pushNamed(context, '/order-confirmation');
     },
     style: ElevatedButton.styleFrom(
       backgroundColor: Colors.black,

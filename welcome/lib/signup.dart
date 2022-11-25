@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:welcome/code.dart';
+import 'package:welcome/signupp.dart';
 import 'package:welcome/homepage.dart';
 import 'package:welcome/login.dart';
 import 'package:intl/intl.dart';
@@ -127,7 +127,7 @@ class SignupPage extends StatefulWidget {
     DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate,
-      firstDate: DateTime(1900),
+      firstDate: DateTime(1100),
       lastDate: DateTime(2025),
     // ).then((selectedDate) {
     //   if (selectedDate != null) {
@@ -232,10 +232,9 @@ SizedBox( height: 10,),
                 child: MaterialButton(
                   minWidth: double.infinity,
                   height: 60,
-                  onPressed: () {
-                    Navigator.push(context,
+                  onPressed: () {Navigator.push(context,
                           MaterialPageRoute(
-                              builder: (context) => SampleDesign()));
+                              builder: (context) => SignupDesign(user: _usernameController.text, email: _emailController.text, birthday: _dateController.text,  pass: _passwordController.text,)));
                   },
                   color: Colors.white,
                   elevation: 0,

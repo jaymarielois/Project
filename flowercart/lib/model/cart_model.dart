@@ -29,10 +29,10 @@ class Cart extends Equatable{
 
 
 double deliveryFee(subtotal) {
-  if (subtotal >= 20.0) {
+  if (subtotal >= 3000.0) {
     return 0.0;
   } else
-    return 10.0;
+    return 200.0;
   }
 
   double total(subtotal, deliveryFee) {
@@ -40,12 +40,12 @@ double deliveryFee(subtotal) {
   }
 
   String freeDelivery(subtotal) {
-    if (subtotal >= 30.0) {
+    if (subtotal >= 3000) {
       return 'You have Free Delivery!';
     } else {
-      double missing = 30.0 - subtotal;
+      double missing = 3000.0 - subtotal;
 
-      return 'Add\$${missing.toStringAsFixed(2)} for FREE DELIVERY!';
+      return 'Add \₱${missing.toStringAsFixed(2)} for Free Delivery!';
     }
   }
 

@@ -23,7 +23,7 @@ class OrderSummary extends StatelessWidget {
                           Text('SUBTOTAL', 
                           style: Theme.of(context).textTheme.headline5,
                           ),
-                          Text('\$${state.cart.subtotalString}',
+                          Text('\₱${state.cart.subtotalString}',
                           style: Theme.of(context).textTheme.headline5,
                           ),
                         ],
@@ -35,7 +35,7 @@ class OrderSummary extends StatelessWidget {
                          Text('DELIVERY FEE', 
                          style: Theme.of(context).textTheme.headline5,
                          ),
-                          Text('\$${state.cart.deliveryFeeString}',
+                          Text('\₱${state.cart.deliveryFeeString}',
                          style: Theme.of(context).textTheme.headline5,
                       ),
                     ],
@@ -71,7 +71,7 @@ class OrderSummary extends StatelessWidget {
                          .headline5!
                          .copyWith(color: Colors.black),
                          ),
-                            Text('\$${state.cart.totalString}',
+                            Text('\₱${state.cart.totalString}',
                          style: Theme.of(context)
                          .textTheme
                          .headline5!

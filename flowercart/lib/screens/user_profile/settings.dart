@@ -1,168 +1,221 @@
-import 'package:flowercart/login.dart';
-import 'package:flowercart/screens/user_profile/logout.dart';
-import 'package:flowercart/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class SettingPage extends StatelessWidget {
-  const SettingPage ({super.key});
+  // const settings({Key? key}) : super(key: key);
+  bool switchState = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: CustomAppBar(
-      title: 'Settings',
-      ),
-      body: Container(
-        padding: EdgeInsets.only(left: 16, top: 25, right: 16),
-        child: ListView(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+          title: Text(
+            'Settings',
+            style: Theme.of(context).textTheme.headline3,
+          ),
+          backgroundColor: Color(0xffEDDBC0),
+          leading: IconButton(onPressed: () {Navigator.pop(context);
+          },
+            icon: Icon(Icons.arrow_back_ios,
+            size: 20,
+            color: Colors.black,),
+
+        ),
+
+        ),
+        body: Column(
           children: [
             Row(
               children: [
-                Icon(
-                  Icons.person,
-                  color: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
+                  child: Icon(Icons.person_outlined,
+                      color: Colors.black),
                 ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  "Account",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(16, 20, 0, 0),
+                  child: Text(
+                    'Account',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
                 ),
               ],
             ),
-            Divider(
+            const Divider(
+              color: Colors.black,
+            ),
+            const SizedBox(
+              height: 9,
+            ),
+            Row(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Text(
+                    'Change Password',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 180),
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.black,
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(
               height: 15,
-              thickness: 2,
             ),
-            SizedBox(
-              height: 10,
+            Row(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Text(
+                    'Content Settings',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 190),
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.black,
+                  ),
+                )
+              ],
             ),
-            buildAccountOptionRow(context, "Change password"),
-            buildAccountOptionRow(context, "Privacy and security"),
-            SizedBox(
-              height: 40,
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Text(
+                    'Languange',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 243),
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.black,
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Text(
+                    'Privacy and security',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 165),
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.black,
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Text(
+                    'Change Password',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 180),
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
             ),
             Row(
               children: [
-                Icon(
-                  Icons.volume_up_outlined,
-                  color: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
+                  child: Icon(Icons.notifications,
+                      color: Colors.black),
                 ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  "Notifications",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(16, 20, 0, 0),
+                  child: Text(
+                    'Notification',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
                 ),
               ],
             ),
-            Divider(
-              height: 15,
-              thickness: 2,
+            const Divider(
+              color: Colors.black,
             ),
-            SizedBox(
+            Row(children: [
+              const Padding(
+                padding: EdgeInsets.only(left: 35),
+                child: Text(
+                  'Turn on Notification',
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                ),
+              ),
+              const SizedBox(
+                width: 120,
+              ),
+              CupertinoSwitch(
+                  activeColor: Colors.black,
+                  trackColor: Colors.black,
+                  value: switchState,
+                  onChanged: (bool value) {
+                    print(value);
+                  }),
+            ]),
+            const SizedBox(
               height: 10,
             ),
-            buildNotificationOptionRow("New for you", true),
-            buildNotificationOptionRow("Account activity", true),
-            buildNotificationOptionRow("Opportunity", false),
-            SizedBox(
-              height: 50,
-            ),
-            Center(
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                ),
-                onPressed: () {},
-                child: GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
-                  },
-                  child: Text("SIGN OUT",
-                      style: TextStyle(
-                          fontSize: 16, letterSpacing: 2.2, color: Colors.black)),
+            Row(children: [
+              const Padding(
+                padding: EdgeInsets.only(left: 35),
+                child: Text(
+                  'Active Status',
+                  style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
               ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Row buildNotificationOptionRow(String title, bool isActive) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey[600]),
-        ),
-        Transform.scale(
-            scale: 0.7,
-            child: CupertinoSwitch(value: isActive,onChanged: (bool val) {},
-            ))
-      ],
-    );
-  }
-
-  GestureDetector buildAccountOptionRow(BuildContext context, String title) {
-    return GestureDetector(
-      onTap: () {
-        showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text(title),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text("Option 1"),
-                    Text("Option 2"),
-                    Text("Option 3"),
-                  ],
-                ),
-                actions: [
-                  TextButton(
-                  onPressed: () {
-                   Navigator.of(context).pop();
-                   },
-                   child:Text("Close"),),
-                ],
-              );
-            });
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: Colors.grey[600],
+              const SizedBox(
+                width: 183,
               ),
-            ),
-            Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.grey,
-            ),
+              CupertinoSwitch(
+                  activeColor: Colors.black,
+                  trackColor: Colors.black,
+                  value: switchState,
+                  onChanged: (bool value) {
+                    print(value);
+                  }),
+            ]),
           ],
-        ),
-      ),
-    );
+        ));
   }
-} 
+}

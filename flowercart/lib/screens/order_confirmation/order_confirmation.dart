@@ -16,7 +16,7 @@ class OrderConfirmation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Order Confirmation'),
+      appBar: CustomAppBar(title: 'Confirmation'),
       bottomNavigationBar: CustomNavBar(screen: routeName),
       body: Container(),
     );

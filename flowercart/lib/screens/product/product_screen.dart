@@ -59,6 +59,9 @@ class ProductScreen extends StatelessWidget {
                                          .read<CartBloc>()
                                          .add(CartProductAdded(product));
                                          Navigator.pushNamed(context, '/cart');
+
+                                         final snackBar = SnackBar(content: Text('Added to your Cart!'));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                                          },
                                   child: Text('ADD TO CART',
                                       style: Theme.of(context).textTheme.headline3!),

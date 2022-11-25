@@ -1,12 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flowercart/model/category_model.dart';
 import 'package:flowercart/model/product_model.dart';
+import 'package:flowercart/screens/home/drawerHeader.dart';
 import 'package:flutter/material.dart';
 import 'package:flowercart/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/';
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({super.key, this.user, this.email, this.birthday, this.pass});
+  String? user;
+  String? email;
+  String? birthday;
+  String? pass;
   
   static Route route() {
     return MaterialPageRoute(
@@ -21,6 +26,16 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Reines Fleuries'),
+      drawer: Drawer(
+        child: SingleChildScrollView(
+          child: Container(
+            child: Column(
+              children: [
+                MyDrawerHeader(),
+              ]),
+          ),
+        ),
+      ),
       bottomNavigationBar: CustomNavBar(screen: routeName),
       body: Column(
         children: [
@@ -48,4 +63,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-

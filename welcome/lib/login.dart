@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:welcome/code.dart';
+import 'package:welcome/signupp.dart';
 import 'package:welcome/homepage.dart';
+import 'package:welcome/loginn.dart';
 import 'package:welcome/main.dart';
 import 'package:welcome/signup.dart';
 
@@ -9,7 +10,7 @@ class LoginPage extends StatefulWidget {
 
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState(); 
 }
 
 class _LoginPageState extends State<LoginPage>{
@@ -139,7 +140,7 @@ class _LoginPageState extends State<LoginPage>{
                       onPressed: () {
                         Navigator.push(context,
                           MaterialPageRoute(
-                              builder: (context) => SampleDesign(user: _usernameController.text, pass: _passwordController.text,)));
+                              builder: (context) => LoginDesign(user: _usernameController.text, pass: _passwordController.text,)));
                       },
                     color: Colors.white,
                     elevation: 0,

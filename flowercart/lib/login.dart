@@ -2,6 +2,8 @@ import 'package:flowercart/screens/home/home_screen.dart';
 import 'package:flowercart/signup.dart';
 import 'package:flutter/material.dart';
 
+import 'loginn.dart';
+
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -35,6 +37,9 @@ class _LoginPageState extends State<LoginPage>{
 
     });
   }
+
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
 
 
@@ -84,6 +89,7 @@ class _LoginPageState extends State<LoginPage>{
                 Padding(padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Column( children:<Widget> [
                       TextField(
+                    controller: _usernameController,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -100,6 +106,7 @@ class _LoginPageState extends State<LoginPage>{
                     SizedBox( height: 10,),
 
                     TextField(
+                      controller: _passwordController,
                     onChanged: (password) => onPasswordChanged(password),
                     obscureText: !_isVisible,
                     decoration: InputDecoration(
@@ -144,7 +151,9 @@ class _LoginPageState extends State<LoginPage>{
                       minWidth: double.infinity,
                       height: 60,
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                        Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginDesign(user: _usernameController.text, pass: _passwordController.text,)));
                       },
                     color: Colors.white,
                     elevation: 0,

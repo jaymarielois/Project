@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           title: 'Reines Fleuries',
           theme: theme(),
           onGenerateRoute: AppRouter.onGenerateRoute,
-          initialRoute: SplashScreen.routeName,
+          initialRoute: HomeScreen.routeName,
         ),
       );
     });

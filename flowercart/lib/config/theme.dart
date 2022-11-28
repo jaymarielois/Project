@@ -48,7 +48,7 @@ TextTheme textTheme() {
   ),
     bodyText2: TextStyle(
       color: Colors.black,
-      fontSize: 10,
+      fontSize: 13,
       fontWeight: FontWeight.normal,
     ),
   );

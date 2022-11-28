@@ -1,7 +1,7 @@
 import 'dart:convert';
+import 'package:flowercart/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
-import 'package:welcome/homepage.dart';
 class SignupDesign extends StatelessWidget {
   final String? user;
   final String? email;

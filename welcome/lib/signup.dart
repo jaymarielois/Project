@@ -232,7 +232,8 @@ SizedBox( height: 10,),
                 child: MaterialButton(
                   minWidth: double.infinity,
                   height: 60,
-                  onPressed: () {Navigator.push(context,
+                  onPressed: () {
+                    Navigator.push(context,
                           MaterialPageRoute(
                               builder: (context) => SignupDesign(user: _usernameController.text, email: _emailController.text, birthday: _dateController.text,  pass: _passwordController.text,)));
                   },

@@ -136,8 +136,9 @@ class ProductScreen extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text(
-                      'The red rose symbolizes romance, love, beauty, and courage. A perfect dozen shouts "Be mine!"',
-                      style: Theme.of(context).textTheme.bodyText1),
+                      'Fresh Flowers, Gifts, Balloons',
+                      style: Theme.of(context).textTheme.bodyText2),
+                      
                 )
               ],
             ),
@@ -149,8 +150,8 @@ class ProductScreen extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text(
-                      'The red rose symbolizes romance, love, beauty, and courage.',
-                      style: Theme.of(context).textTheme.bodyText1),
+                      'Los Baños, Laguna',
+                      style: Theme.of(context).textTheme.bodyText2),
                 )
               ],
             ),

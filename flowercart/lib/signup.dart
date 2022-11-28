@@ -1,5 +1,6 @@
 import 'package:flowercart/login.dart';
 import 'package:flowercart/screens/screens.dart';
+import 'package:flowercart/signupp.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 class SignupPage extends StatefulWidget {
@@ -15,6 +16,10 @@ class SignupPage extends StatefulWidget {
   DateTime selectedDate = DateTime.now();
 
   TextEditingController _dateController = TextEditingController();
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
 
   onPasswordChanged(String password) {
   final numericRegex = RegExp(r'[0-9]');
@@ -72,7 +77,8 @@ class SignupPage extends StatefulWidget {
                Padding(padding: EdgeInsets.symmetric(horizontal: 40),
                   child: Column( children:<Widget> [
                    TextField(
-              decoration: InputDecoration(
+                    controller: _usernameController,
+                    decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(color: Colors.black)
@@ -87,6 +93,7 @@ class SignupPage extends StatefulWidget {
             ),
                     SizedBox( height: 10,),
                     TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -146,6 +153,7 @@ class SignupPage extends StatefulWidget {
 SizedBox( height: 10,),
 
   TextField(
+    controller: _passwordController,
   onChanged: (password) => onPasswordChanged(password),
   obscureText: !_isVisible,
   decoration: InputDecoration(
@@ -225,7 +233,9 @@ SizedBox( height: 10,),
                   minWidth: double.infinity,
                   height: 60,
                   onPressed: () {
-                     Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                     Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => SignupDesign(user: _usernameController.text, email: _emailController.text, birthday: _dateController.text,  pass: _passwordController.text,)));
                   },
                   color: Colors.white,
                   elevation: 0,
